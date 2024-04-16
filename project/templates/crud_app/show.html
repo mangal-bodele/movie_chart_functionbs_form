@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Title</title>
+{% endblock %}
+{% block content %}
+ <table class="mt-5 m-auto border border-3 p-3 col-8 text-center">
+     <thead class="p-3 bg-dark text-white">
+        <tr>
+            <th>ID</th>
+            <th>MOVIE</th>
+            <th>YEAR</th>
+            <th>INDUSTRY</th>
+            <th>language</th>
+            <th colspan="2">ACTION</th>
+        </tr>
+
+     </thead>
+     <tbody>
+            {% for moviechart in moviecharts %}
+                <tr>
+                    <td>{{ moviechart.id }}</td>
+                    <td>{{ moviechart.movie }}</td>
+                    <td>{{ moviechart.release_year }}</td>
+                    <td>{{ moviechart.industry }}</td>
+                    <td>{{ moviechart.language }}</td>
+                    <td>
+                        <a href="{% url 'update_url' moviechart.id %}">
+                            <button><i class="bi bi-pencil-square"></i>&nbspUpdate</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete_url' moviechart.id %}">
+                                    <button><i class="bi bi-pencil-square"></i>&nbspdelete</button>
+                        </a>
+                    </td>
+                {% endfor %}
+            </tr>
+     </tbody>
+ </table>
+{% endblock %}
+
